@@ -1,26 +1,10 @@
-export const compose =
-  <T, R>(...fns: readonly Function[]): Function =>
-  (x: T): R => {
-    return [...fns].reverse().reduce((v, f) => f(v), x);
-  };
+import { Container } from "./container";
+import { MayBe } from "./maybe";
 
-export const pipe =
-  <T, R>(...fns: readonly Function[]): Function =>
-  (x: T): R => {
-    return [...fns].reduce((v, f) => f(v), x);
-  };
+const square = (x) => x ** 2;
 
-const f = <T>(x: T) => `f(${x})`;
-const g = <T>(x: T) => `g(${x})`;
-const h = <T>(x: T) => `h(${x})`;
+const square2 = Container.of(3).map(square);
+const square3 = MayBe.of(null).map(square);
 
-const inc = (x: string) => x + 1;
-
-const composed = compose<number, string>(inc, inc, inc);
-console.log(composed(1));
-
-const fgh = compose<number, string>(f, g, h);
-const rfgh = pipe<number, string>(f, g, h);
-
-console.log(fgh("x"));
-console.log(rfgh("x"));
+console.log(square2.map(square));
+console.log(square3.map(square));
