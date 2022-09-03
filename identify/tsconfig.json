@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    // 트랜스파일할 버전
+    "target": "es5",
+    // commonjs = node(노드), amd = classic(브라우저)
+    "module": "commonjs",
+    "moduleResolution": "node",
+    // 현재 디렉터리
+    "baseUrl": ".",
+    // 빌드된 결과 
+    "outDir": "dist",
+    // 오픈소스 중 브라우저에서 실행되는 버전
+    "esModuleInterop": true,
+    // js.map 파일
+    "sourceMap": true,
+    "downlevelIteration": true,
+    // from 부분을 찾아야 하는 디렉터리
+    "paths": {
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
