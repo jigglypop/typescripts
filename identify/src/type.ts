@@ -11,3 +11,8 @@ export interface IApply<T> {
 }
 
 export interface IApplicative<T> extends IApply<T> {}
+export interface IChain<T> extends IApply<T> {
+  chain<U>(f: (T) => U);
+}
+
+export interface IMonad<T> extends IChain<T>, IApplicative<T> {}

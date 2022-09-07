@@ -23,4 +23,7 @@ export class RIdentify<T> implements ISetoid<T>, IApply<T> {
       return RIdentify.of<U>(f(b));
     }
   }
+  chain<U>(f: (T) => U): U {
+    return f(this.value());
+  }
 }
